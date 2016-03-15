@@ -112,7 +112,7 @@ hash_worker(Sup, HashKey) ->
     Wpool_Size ->
       Index = 1 + erlang:phash2(HashKey, Wpool_Size),
           WN = worker_name(Sup, Index),
-          io:format("#### has worker: ~p hashes to ~p", [HashKey, WN]),
+          io:format("#### has worker: ~p hashes to ~p~n", [HashKey, WN]),
           WN
   end.
 

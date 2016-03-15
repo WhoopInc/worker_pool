@@ -48,7 +48,9 @@ start_link(Name, Module, InitArgs, Options) ->
 
 %% @equiv gen_server:call(Process, Call, Timeout)
 -spec call(wpool:name() | pid(), term(), timeout()) -> term().
-call(Process, Call, Timeout) -> gen_server:call(Process, Call, Timeout).
+call(Process, Call, Timeout) ->
+    io:format("### call to ~p (~p)~n", [Process, erlang:whereis(Process)]),
+    gen_server:call(Process, Call, Timeout).
 
 %% @equiv gen_server:cast(Process, {cast, Cast})
 -spec cast(wpool:name() | pid(), term()) -> ok.
