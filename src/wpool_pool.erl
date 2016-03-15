@@ -111,7 +111,9 @@ hash_worker(Sup, HashKey) ->
     undefined -> throw(no_workers);
     Wpool_Size ->
       Index = 1 + erlang:phash2(HashKey, Wpool_Size),
-      worker_name(Sup, Index)
+          WN = worker_name(Sup, Index),
+          io:format("#### has worker: ~p hashes to ~p", [HashKey, WN]),
+          WN
   end.
 
 %% @doc Casts a message to the first available worker.
